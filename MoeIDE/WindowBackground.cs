@@ -74,7 +74,7 @@ namespace Meowtrix.MoeIDE
             }
             catch
             {
-                liveImageControl.SwitchTo(null);
+                liveImageControl.Hibernate();
                 staticImageControl.Source = null;
                 parentBorder.Child = staticImageControl;
             }

@@ -44,11 +44,14 @@ namespace Meowtrix.MoeIDE
             {
                 if ((double)GetValue(IntervalProperty) != value)
                 {
-                    backgroundChanger.Stop();
-                    backgroundChanger.Interval = TimeSpan.FromMilliseconds(value);
-                    if (!Hibernating)
+                    if (backgroundChanger != null)
                     {
-                        backgroundChanger.Start();
+                        backgroundChanger.Stop();
+                        backgroundChanger.Interval = TimeSpan.FromMilliseconds(value);
+                        if (!Hibernating)
+                        {
+                            backgroundChanger.Start();
+                        }
                     }
                     SetValue(IntervalProperty, value);
                 }
@@ -177,6 +180,10 @@ namespace Meowtrix.MoeIDE
 
         public void ChangeFolder(string folderPath)
         {
+            if (imageFiles.Count > 0 && imageFiles.Peek().Contains(folderPath))
+            {
+                return;
+            }
             backgroundChanger.Stop();
 
             var files = Directory.EnumerateFiles(folderPath).Where(f => f.EndsWith(".jpg") || f.EndsWith(".png"));
@@ -186,7 +193,7 @@ namespace Meowtrix.MoeIDE
                 if (imageFiles.Count > 0)
                 {
                     var t = imageFiles.Dequeue();
-                    SwitchTo(LoadImage(t));
+                    SwitchTo(LoadImage(t), TransitionType);
                     imageFiles.Enqueue(t);
                 }
                 if (imageFiles.Count > 1)
