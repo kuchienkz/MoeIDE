@@ -40,7 +40,19 @@ namespace Meowtrix.MoeIDE
         public double Interval
         {
             get { return (double)GetValue(IntervalProperty); }
-            set { SetValue(IntervalProperty, value); }
+            set
+            {
+                if ((double)GetValue(IntervalProperty) != value)
+                {
+                    backgroundChanger.Stop();
+                    backgroundChanger.Interval = TimeSpan.FromMilliseconds(value);
+                    if (!Hibernating)
+                    {
+                        backgroundChanger.Start();
+                    }
+                    SetValue(IntervalProperty, value);
+                }
+            }
         }
 
         public enum Transitions
