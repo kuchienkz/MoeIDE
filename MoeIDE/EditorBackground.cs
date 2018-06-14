@@ -114,6 +114,11 @@ namespace Meowtrix.MoeIDE
             var color = uiShell.GetThemedWPFColor(EnvironmentColors.SystemWindowColorKey);
             var brush = new SolidColorBrush(color);
             brush.Freeze();
+            if (hostRootVisual == null)
+            {
+                var source = PresentationSource.FromVisual(control) as HwndSource;
+                hostRootVisual = source.RootVisual as Panel;
+            }
             hostRootVisual.Background = brush;
         }
 

@@ -9,18 +9,22 @@ namespace Meowtrix.MoeIDE
     public class SettingsModel
     {
         [Serializable]
-        public class ImageInfo
+        public class SettingPack
         {
             public string Filename { get; set; }
+            public bool IsLive { get; set; } = false;
+            public string Folderpath { get; set; }
+            public double Interval { get; set; } = 30000.0;
+            public double TransitionDuration { get; set; } = 2000.0;
             public Stretch Stretch { get; set; } = Stretch.UniformToFill;
             public HorizontalAlignment HorizontalAlignment { get; set; } = HorizontalAlignment.Center;
             public VerticalAlignment VerticalAlignment { get; set; } = VerticalAlignment.Center;
             public Color BackColor { get; set; } = Colors.Transparent;
             public double Opacity { get; set; } = 1.0;
             public double Blur { get; set; } = 0.0;
-            public ImageInfo Clone() => (ImageInfo)MemberwiseClone();
+            public SettingPack Clone() => (SettingPack)MemberwiseClone();
         }
-        public ImageInfo MainBackground { get; set; } = new ImageInfo();
+        public SettingPack MainBackground { get; set; } = new SettingPack();
         public SettingsModel Clone() => new SettingsModel
         {
             MainBackground = this.MainBackground.Clone()

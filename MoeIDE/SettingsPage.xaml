@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:meowtrix="urn:meowtrix"
              d:DataContext="{d:DesignInstance local:SettingsModel}"
-             d:DesignHeight="300" d:DesignWidth="300"
+              d:DesignWidth="300"
              Focusable="True"
              mc:Ignorable="d">
     <StackPanel Orientation="Vertical">
@@ -19,7 +19,73 @@
                 <Setter Property="Margin" Value="4"/>
             </Style>
         </StackPanel.Resources>
-        <GroupBox Grid.Row="0" Header="{local:Localized 201}">
+        <GroupBox Header="{local:Localized 209}" Padding="7">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="{local:Localized 210}" IsChecked="True"/>
+                <RadioButton Content="{local:Localized 211}" IsChecked="{Binding MainBackground.IsLive, Mode=TwoWay}" x:Name="liveMode" Margin="30,0,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="{local:Localized 212}">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=liveMode, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" SharedSizeGroup="Row"/>
+                    <RowDefinition Height="Auto" SharedSizeGroup="Row"/>
+                    <RowDefinition Height="Auto" SharedSizeGroup="Row"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{local:Localized 214}"/>
+                <meowtrix:FilePicker Grid.Row="0" Grid.Column="1"
+                                     Margin="4" PickerType="Folder"
+                                     Filename="{Binding MainBackground.Folderpath, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="1" Text="{local:Localized 215}"/>
+                <TextBox Grid.Row="1" Grid.Column="1"
+                         Margin="4"
+                         Text="{Binding MainBackground.Interval, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="2" Text="{local:Localized 216}"/>
+                <TextBox Grid.Row="2" Grid.Column="1"
+                         Margin="4"
+                         Text="{Binding MainBackground.TransitionDuration, Mode=TwoWay}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="{local:Localized 201}">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=liveMode, Path=IsChecked}" Value="False">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" SharedSizeGroup="Row"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{local:Localized 202}"/>
+                <meowtrix:FilePicker Grid.Row="0" Grid.Column="1"
+                                     Margin="4"
+                                     Filename="{Binding MainBackground.Filename, Mode=TwoWay}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="{local:Localized 213}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -36,10 +102,6 @@
                     <RowDefinition Height="Auto" SharedSizeGroup="Row"/>
                     <RowDefinition Height="Auto" SharedSizeGroup="Row"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{local:Localized 202}"/>
-                <meowtrix:FilePicker Grid.Row="0" Grid.Column="1"
-                                     Margin="4"
-                                     Filename="{Binding MainBackground.Filename, Mode=TwoWay}"/>
                 <TextBlock Grid.Row="1" Text="{local:Localized 203}"/>
                 <meowtrix:EnumComboBox Grid.Row="1" Grid.Column="1"
                                        EnumType="{x:Type Stretch}"

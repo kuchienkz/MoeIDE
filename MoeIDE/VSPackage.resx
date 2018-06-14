@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="110" xml:space="preserve">
     <value>MoeIDE</value>
   </data>
@@ -128,7 +127,7 @@
     <value>※Please select a transparent theme in Environment-&gt;General-&gt;Color Theme to get best experience.</value>
   </data>
   <data name="201" xml:space="preserve">
-    <value>Main Background</value>
+    <value>Static Background Settings</value>
   </data>
   <data name="202" xml:space="preserve">
     <value>File name</value>
@@ -151,6 +150,31 @@
   <data name="208" xml:space="preserve">
     <value>Blur radius</value>
   </data>
+  <data name="209" xml:space="preserve">
+    <value>Select Background Mode</value>
+  </data>
+  <data name="210" xml:space="preserve">
+    <value>Static</value>
+  </data>
+  <data name="211" xml:space="preserve">
+    <value>Live (Experimental)</value>
+  </data>
+  <data name="212" xml:space="preserve">
+    <value>Live Background Settings</value>
+  </data>
+  <data name="213" xml:space="preserve">
+    <value>Image Settings</value>
+  </data>
+  <data name="214" xml:space="preserve">
+    <value>Folder path</value>
+  </data>
+  <data name="215" xml:space="preserve">
+    <value>Interval (Milliseconds)</value>
+  </data>
+  <data name="216" xml:space="preserve">
+    <value>Trans. Duration</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="400" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\moeide.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
