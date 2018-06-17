@@ -26,15 +26,15 @@ namespace Meowtrix.MoeIDE
         {
             try
             {
-                IsLiveMode = newSettings.MainBackground.IsLive;
+                IsLiveMode = newSettings.MainSetting.IsLive;
                 if (IsLiveMode)
                 {
-                    liveImageControl.ChangeFolder(newSettings.MainBackground.Folderpath);
-                    liveImageControl.Stretch = newSettings.MainBackground.Stretch;
-                    liveImageControl.Interval = newSettings.MainBackground.Interval;
-                    liveImageControl.TransitionDuration = newSettings.MainBackground.TransitionDuration;
-                    liveImageControl.HorizontalAlignment = newSettings.MainBackground.HorizontalAlignment;
-                    liveImageControl.VerticalAlignment = newSettings.MainBackground.VerticalAlignment;
+                    liveImageControl.ChangeFolder(newSettings.MainSetting.Folderpath);
+                    liveImageControl.Stretch = newSettings.MainSetting.Stretch;
+                    liveImageControl.Interval = newSettings.MainSetting.Interval;
+                    liveImageControl.TransitionDuration = newSettings.MainSetting.TransitionDuration;
+                    liveImageControl.HorizontalAlignment = newSettings.MainSetting.HorizontalAlignment;
+                    liveImageControl.VerticalAlignment = newSettings.MainSetting.VerticalAlignment;
 
                     liveImageControl.Wake();
                 }
@@ -42,23 +42,22 @@ namespace Meowtrix.MoeIDE
                 {
                     liveImageControl.Hibernate();
 
-                    var imagesource = BitmapFrame.Create(new Uri(newSettings.MainBackground.Filename), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                    var imagesource = BitmapFrame.Create(new Uri(newSettings.MainSetting.Filename), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
                     imagesource.Freeze();
                     staticImageControl.Source = imagesource;
-                    staticImageControl.Stretch = newSettings.MainBackground.Stretch;
-                    staticImageControl.HorizontalAlignment = newSettings.MainBackground.HorizontalAlignment;
-                    staticImageControl.VerticalAlignment = newSettings.MainBackground.VerticalAlignment;
+                    staticImageControl.Stretch = newSettings.MainSetting.Stretch;
+                    staticImageControl.HorizontalAlignment = newSettings.MainSetting.HorizontalAlignment;
+                    staticImageControl.VerticalAlignment = newSettings.MainSetting.VerticalAlignment;
                 }
                 
-                
-                var br = new SolidColorBrush(newSettings.MainBackground.BackColor);
+                var br = new SolidColorBrush(newSettings.MainSetting.BackColor);
                 br.Freeze();
                 parentBorder.Background = br;
 
-                liveImageControl.Opacity = newSettings.MainBackground.Opacity;
-                staticImageControl.Opacity = newSettings.MainBackground.Opacity;
+                liveImageControl.Opacity = newSettings.MainSetting.Opacity;
+                staticImageControl.Opacity = newSettings.MainSetting.Opacity;
 
-                double blur = newSettings.MainBackground.Blur;
+                double blur = newSettings.MainSetting.Blur;
                 if (blur == 0.0)
                 {
                     liveImageControl.Effect = null;

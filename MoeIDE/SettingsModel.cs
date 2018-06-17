@@ -24,10 +24,10 @@ namespace Meowtrix.MoeIDE
             public double Blur { get; set; } = 0.0;
             public SettingPack Clone() => (SettingPack)MemberwiseClone();
         }
-        public SettingPack MainBackground { get; set; } = new SettingPack();
+        public SettingPack MainSetting { get; set; } = new SettingPack();
         public SettingsModel Clone() => new SettingsModel
         {
-            MainBackground = this.MainBackground.Clone()
+            MainSetting = this.MainSetting.Clone()
         };
     }
 }
